@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+// employed ai help to center image and link back to home
 
 const Apology = () => {
   return (
@@ -9,7 +10,7 @@ const Apology = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        backgroundColor: 'white', // White background
+        backgroundColor: 'white', 
         flexDirection: 'column',
         textAlign: 'center',
         padding: '20px',
@@ -17,7 +18,7 @@ const Apology = () => {
     >
       {/* Image in the center */}
       <img
-        src="apology.jpg" // Replace with your image URL
+        src="apology.jpg" 
         alt="Apology"
         style={{ width: '400px', height: '350px', marginTop: '100px' }}
       />
