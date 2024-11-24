@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+// employed ai help on how to autocomplete and redirect
 
 const RecommendForm = () => {
   const [movieTitle, setMovieTitle] = useState('');
@@ -35,13 +36,12 @@ const RecommendForm = () => {
 
   const handleRecommendation = () => {
     if (!movieTitle || movieTitle.trim() === '') {
-      navigate('/apology'); // Redirect to apology page if no movie is entered
+      navigate('/apology'); 
       return;
     }
 
-    // Check if the movie exists in the dataset
     if (!movieSuggestions.includes(movieTitle)) {
-      navigate('/apology'); // Redirect if the movie is not in the dataset
+      navigate('/apology'); 
       return;
     }
 
@@ -51,7 +51,7 @@ const RecommendForm = () => {
         setLoading(false);
 
         if (!response.data || response.data.length === 0) {
-          navigate('/apology'); // Redirect if no recommendations are returned
+          navigate('/apology'); 
         } else {
           navigate('/recommendations', { state: { recommendations: response.data, movieTitle } });
         }
