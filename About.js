@@ -1,4 +1,5 @@
 import React from 'react';
+//employed ai help to disable scrolling and centering images and background
 
 const About = () => {
   return (
@@ -14,7 +15,7 @@ const About = () => {
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed',
         margin: 0,
-        overflow: 'hidden', // Disable scrolling
+        overflow: 'hidden', 
       }}
     >
       <div
