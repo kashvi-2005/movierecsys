@@ -1,15 +1,15 @@
 import React, { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+// employed ai help on how to hover and redirect
 
 const RecommendationsPage = () => {
   const { state } = useLocation();
   const { user_movie_details, movies } = state?.recommendations || {}; 
   const navigate = useNavigate();
 
-  // Redirect to Apology Page if no movies are found or user_movie_details are missing
   useEffect(() => {
     if (!user_movie_details || !movies || movies.length === 0) {
-      navigate('/apology');  // Redirect to apology page
+      navigate('/apology');  
     }
   }, [user_movie_details, movies, navigate]);
 
@@ -19,7 +19,6 @@ const RecommendationsPage = () => {
 
   return (
     <div style={{ position: 'relative', minHeight: '100vh' }}>
-      {/* Background Image */}
       <div
         style={{
           position: 'absolute',
@@ -34,8 +33,7 @@ const RecommendationsPage = () => {
           zIndex: '-1', 
         }}
       ></div>
-
-      {/* Display the original movie details */}
+      
       <div style={{ marginBottom: '100px', display: 'flex', alignItems: 'center', paddingLeft: '100px' }}>
         <img
           src={user_movie_details?.poster_url}
@@ -46,8 +44,7 @@ const RecommendationsPage = () => {
           <h1 style={{ fontSize: '2.5rem', fontWeight: 'bold', marginLeft: '18px', marginTop: '210px', color: 'white' }}>
             {user_movie_details?.title}
           </h1>
-
-          {/* Display Synopsis, Release Date, and Rating */}
+          
           <div style={{ marginTop: '20px', maxWidth: '900px' }}>
             <p style={{ fontWeight: 'bold', fontSize: '1.5rem', marginLeft: '20px', color: 'white' }}>Synopsis:</p>
             <p style={{ fontSize: '1.1rem', lineHeight: '1.8', textAlign: 'justify', marginLeft: '20px', color: 'white' }}>
@@ -59,7 +56,6 @@ const RecommendationsPage = () => {
             </p>
             <p style={{ marginLeft: '20px', color: 'white' }}>{user_movie_details?.release_date}</p>
 
-            {/* Rating and IMDb Button in the same line, IMDb button pushed to the far right */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '30px' }}>
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 <p style={{ fontWeight: 'bold', fontSize: '1.5rem', marginLeft: '20px', color: 'white' }}>
@@ -67,7 +63,7 @@ const RecommendationsPage = () => {
                 </p>
                 <p style={{ marginLeft: '20px', color: 'white' }}>{user_movie_details?.rating}</p>
               </div>
-              {/* IMDb Button aligned to the far right */}
+
               <a
                 href={user_movie_details?.imdb_link}
                 target="_blank"
@@ -91,14 +87,14 @@ const RecommendationsPage = () => {
         </div>
       </div>
 
-      {/* Display movie recommendations */}
+
       <h1 style={{ marginLeft: '60px', marginTop: '0px', fontWeight: 'bold', color: 'white' }}>
         Other movies you may like:
       </h1>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '30px', marginTop: '50px' }}>
         {movies.map((movie, index) => (
           <div key={index} style={{ textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-            {/* Movie poster with hover effect */}
+      
             <a href={movie.imdb_link} target="_blank" rel="noopener noreferrer">
               <img
                 src={movie.poster_url}
@@ -115,9 +111,7 @@ const RecommendationsPage = () => {
             <p style={{ fontWeight: 'bold', color: 'white' }}>{movie.title}</p>
           </div>
         ))}
-      </div>
-
-      {/* Style for hover effect */}
+      </
       <style>
         {`
           .movie-poster:hover {
