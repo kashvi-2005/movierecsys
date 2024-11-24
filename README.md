@@ -6,9 +6,6 @@ So, I present my first AIML project, a Movie recommendation system, using K-Near
 
 The user enters a movie, and movie title gets sent to Flask backend, where my Machine Learning Model performs KNN algorithm based on user ratings and genres, and gives 20 most similar movies to the one user entered.  
 
-## **Demo:**
-Deployed at: 
-
 ## __Technologies Used:__
 
 Backend: 
@@ -94,7 +91,4 @@ Next was the frontend. Having worked with HTML, CSS and JavaScript before, I dec
 1. CS50x Duck Debugger
 2. ChatGPT for helping solve erroneous code, questions on how to implement model training, autocomplete features, and smooth API calls, ensuring no websocket or failed reachouts for data type ofonfig errors. 
 
-
-
-=======
 
