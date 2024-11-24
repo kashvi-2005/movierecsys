@@ -5,17 +5,17 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from knn_model import load_data, preprocess_features, load_knn_model, get_recommendations
 
-# Load environment variables from .env file
+# looading environment variables from .env file
 load_dotenv()
 
-# Get the TMDb API key from the environment variables
+# get the TMDb API key from the env
 TMDB_API_KEY = os.getenv('API_KEY')
 TMDB_BASE_URL = 'https://api.themoviedb.org/3/'
 
 app = Flask(__name__)
 CORS(app, origins=["http://localhost:3000"], supports_credentials=True)
 
-# Load the data and train the model
+# load the data and train the model, employed ai guidance to load the trained model
 df = load_data()
 combined_features, df = preprocess_features(df)
 knn_model = load_knn_model()
@@ -30,14 +30,12 @@ def recommend():
     movie_title = movie.get("title")
 
     if movie_title:
-        # Step 1: Get recommendations from the KNN model
         recommendations = get_recommendations(movie_title, df, knn_model, combined_features, TMDB_API_KEY)
 
         if recommendations:
-            # Return the full response including user movie details and recommendations
             response = {
                 'user_movie_details': recommendations['user_movie_details'],
-                'movies': recommendations['recommendations']  # This is the list of recommended movies
+                'movies': recommendations['recommendations'] 
             }
             return jsonify(response)
 
@@ -47,7 +45,7 @@ def recommend():
         return jsonify({"error": "No title provided"}), 400
 
 @app.route('/movies', methods=['GET'])
-def get_movies():
+def get_movies(): # emploed ai help for converting to correct format
     movie_titles = df['title'].tolist()
     return jsonify(movie_titles)
 
